@@ -43,8 +43,8 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - ./webapp/images:/usr/share/nginx/html/images
-      - ./webapp/index.html:/usr/share/nginx/html/index.html
+      - ./webapp:/usr/share/nginx/html
+
 
 volumes:
   grafana-storage:
