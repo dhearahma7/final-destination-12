@@ -42,8 +42,6 @@ services:
     container_name: final-web
     ports:
       - "8081:80"
-    volumes:
-      - ./webapp:/usr/share/nginx/html
 
 
 volumes:
