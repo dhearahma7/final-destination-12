@@ -37,11 +37,11 @@ services:
       - '--path.rootfs=/rootfs'
       - '--collector.textfile.directory=/var/lib/node_exporter/textfile_collector'
   
-  webapp:
+    webapp:
     image: ghcr.io/iqlalunesa/final-destination-12:latest
     container_name: final-web
     ports:
-      - "8080:80"
+      - "8081:80"
 
 volumes:
   grafana-storage:
