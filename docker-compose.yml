@@ -27,7 +27,7 @@ services:
     image: prom/node-exporter
     container_name: node-exporter
     ports:
-      - "9100:9100"
+      - "9101:9100"
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
