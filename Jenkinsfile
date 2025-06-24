@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    GIT_REPO = "https://github.com/dhearahma7/final-destination-12.git
+    GIT_REPO = "https://github.com/dhearahma7/final-destination-12.git"
   }
 
   stages {
@@ -15,7 +15,7 @@ pipeline {
     stage('Update index.html') {
       steps {
         sh '''
-        python3 scripts/update_gallery.py
+          python3 scripts/update_gallery.py
         '''
       }
     }
@@ -27,21 +27,20 @@ pipeline {
             git config user.name "dhearahma7"
             git config user.email "dheadianti235@gmail.com"
 
+            git remote set-url origin https://$GIT_USER:$GIT_PASS@github.com/dhearahma7/final-destination-12.git
             git add webapp/index.html || true
-            git commit -m "CI: Update index.html with new gallery images" || true
-            git push https://$GIT_USER:$GIT_PASS@github.com/dhearahma7/final-destination-12.git
-
+            git commit -m "CI: Update index.html with new gallery images" || echo "No changes to commit"
+            git push origin main
           '''
         }
       }
     }
 
-
     stage('Deploy (Optional)') {
       steps {
         sh '''
-        docker compose down || true
-        docker compose up -d --build
+          docker compose down || true
+          docker compose up -d --build
         '''
       }
     }
